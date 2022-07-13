@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:hogwarts_faculty_hours/screens/home/settings_screen.dart';
+import 'package:hogwarts_faculty_hours/screens/settings_screen/settings_screen.dart';
 
 class ColumnTimeWidget extends StatelessWidget {
   final Color color;
@@ -35,6 +35,10 @@ class ColumnTimeWidget extends StatelessWidget {
               borderRadius: const BorderRadius.all(
                 Radius.circular(40),
               ),
+            ),
+            child: const SizedBox(
+              height: 50,
+              width: 50,
             ),
           ),
         ),
