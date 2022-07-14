@@ -6,12 +6,18 @@ import 'widgets/add_button_widget.dart';
 import 'widgets/buttons_widget.dart';
 import 'widgets/clear_button_widget.dart';
 
-class SettingsScreen extends StatelessWidget {
-  final String? textChangeColumn;
+class SettingsScreen extends StatefulWidget {
+  final String title;
 
-  const SettingsScreen({Key? key, this.textChangeColumn}) : super(key: key);
+  const SettingsScreen({
+    Key? key,
+    required this.title,
+  }) : super(key: key);
 
-  static void show(BuildContext context) {
+  static void show({
+    required BuildContext context,
+    required String titleShow,
+  }) {
     showModalBottomSheet(
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
@@ -20,10 +26,15 @@ class SettingsScreen extends StatelessWidget {
       ),
       isScrollControlled: true,
       context: context,
-      builder: (_) => const SettingsScreen(),
+      builder: (_) => SettingsScreen(title: titleShow),
     );
   }
 
+  @override
+  State<SettingsScreen> createState() => _SettingsScreenState();
+}
+
+class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -35,7 +46,7 @@ class SettingsScreen extends StatelessWidget {
           children: [
             FittedBox(
               child: Text(
-                'Вносим изминения в $textChangeColumn столбце',
+                'Вносим изминения в ${widget.title} столбце',
                 style: const TextStyle(fontSize: 20),
               ),
             ),

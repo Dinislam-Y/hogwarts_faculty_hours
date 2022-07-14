@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class ClearButtonWidget extends StatelessWidget {
   final String text;
-  final dynamic onTap;
+  final VoidCallback onTap;
 
   const ClearButtonWidget({
     Key? key,

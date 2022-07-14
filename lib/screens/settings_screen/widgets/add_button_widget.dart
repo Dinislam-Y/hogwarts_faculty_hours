@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class AddButtonHogwartsWidget extends StatelessWidget {
   final String text;
-  final dynamic onTap;
+  final VoidCallback onTap;
 
   const AddButtonHogwartsWidget({
     Key? key,

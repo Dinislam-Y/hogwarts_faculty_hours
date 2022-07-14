@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class ButtonsWidget extends StatelessWidget {
   final String text;
   final Color color;
-  final dynamic onTap;
+  final VoidCallback onTap;
 
   const ButtonsWidget({
     Key? key,
