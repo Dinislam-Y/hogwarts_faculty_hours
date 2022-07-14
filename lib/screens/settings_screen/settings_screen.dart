@@ -3,20 +3,22 @@ import 'package:flutter/material.dart';
 
 // Project imports:
 import 'widgets/add_button_widget.dart';
-import 'widgets/buttons_widget.dart';
-import 'widgets/clear_button_widget.dart';
+import 'widgets/reduce_button_widget.dart';
 
-class SettingsScreen extends StatefulWidget {
+class SettingsScreen extends StatelessWidget {
   final String title;
+  final Function function;
 
   const SettingsScreen({
     Key? key,
     required this.title,
+    required this.function,
   }) : super(key: key);
 
   static void show({
     required BuildContext context,
     required String titleShow,
+    required Function function,
   }) {
     showModalBottomSheet(
       shape: const RoundedRectangleBorder(
@@ -26,15 +28,13 @@ class SettingsScreen extends StatefulWidget {
       ),
       isScrollControlled: true,
       context: context,
-      builder: (_) => SettingsScreen(title: titleShow),
+      builder: (_) => SettingsScreen(
+        title: titleShow,
+        function: function,
+      ),
     );
   }
 
-  @override
-  State<SettingsScreen> createState() => _SettingsScreenState();
-}
-
-class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -46,7 +46,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           children: [
             FittedBox(
               child: Text(
-                'Вносим изминения в ${widget.title} столбце',
+                'Вносим изминения в "$title" столбце',
                 style: const TextStyle(fontSize: 20),
               ),
             ),
@@ -56,60 +56,56 @@ class _SettingsScreenState extends State<SettingsScreen> {
               children: [
                 AddButtonHogwartsWidget(
                   text: '+3',
-                  onTap: () {},
+                  onTap: () {
+                    function(3);
+                  },
                 ),
                 AddButtonHogwartsWidget(
                   text: '+5',
-                  onTap: () {},
+                  onTap: () {
+                    function(5);
+                  },
                 ),
                 AddButtonHogwartsWidget(
                   text: '+10',
-                  onTap: () {},
+                  onTap: () {
+                    function(10);
+                  },
                 ),
                 AddButtonHogwartsWidget(
                   text: '+15',
-                  onTap: () {},
+                  onTap: () {
+                    function(15);
+                  },
                 ),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                ClearButtonWidget(
+                ReduceButtonWidget(
                   text: '-3',
-                  onTap: () {},
+                  onTap: () {
+                    function(-3);
+                  },
                 ),
-                ClearButtonWidget(
+                ReduceButtonWidget(
                   text: '-5',
-                  onTap: () {},
+                  onTap: () {
+                    function(-5);
+                  },
                 ),
-                ClearButtonWidget(
+                ReduceButtonWidget(
                   text: '-10',
-                  onTap: () {},
+                  onTap: () {
+                    function(-10);
+                  },
                 ),
-                ClearButtonWidget(
+                ReduceButtonWidget(
                   text: '-15',
-                  onTap: () {},
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ButtonsWidget(
-                  text: 'Pause',
-                  color: Colors.red,
-                  onTap: () {},
-                ),
-                ButtonsWidget(
-                  text: 'Add',
-                  color: Colors.blue,
-                  onTap: () {},
-                ),
-                ButtonsWidget(
-                  text: 'Reset',
-                  color: Colors.yellow,
-                  onTap: () {},
+                  onTap: () {
+                    function(-15);
+                  },
                 ),
               ],
             ),

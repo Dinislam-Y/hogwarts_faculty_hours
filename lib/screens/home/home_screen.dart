@@ -1,11 +1,7 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
 
-// Project imports:
-import 'package:hogwarts_faculty_hours/screens/home/widgets/blue_column_widget.dart';
-import 'package:hogwarts_faculty_hours/screens/home/widgets/green_column_widget.dart';
-import 'package:hogwarts_faculty_hours/screens/home/widgets/red_column_widget.dart';
-import 'package:hogwarts_faculty_hours/screens/home/widgets/yellow_column_widget.dart';
+import 'widgets/column_time_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -14,7 +10,7 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -27,10 +23,10 @@ class _HomeScreenState extends State<HomeScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: const [
-                GreenColumnWidget(),
-                BlueColumnWidget(),
-                RedColumnWidget(),
-                YellowColumnWidget(),
+                ColumnTimeWidget(color: Colors.green),
+                ColumnTimeWidget(color: Colors.blue),
+                ColumnTimeWidget(color: Colors.red),
+                ColumnTimeWidget(color: Colors.yellow),
               ],
             ),
           ],
