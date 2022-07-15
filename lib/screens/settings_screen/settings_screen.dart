@@ -8,17 +8,20 @@ import 'widgets/reduce_button_widget.dart';
 class SettingsScreen extends StatelessWidget {
   final String title;
   final Function function;
+  final Color color;
 
   const SettingsScreen({
     Key? key,
     required this.title,
     required this.function,
+    required this.color,
   }) : super(key: key);
 
   static void show({
     required BuildContext context,
     required String titleShow,
     required Function function,
+    required Color color,
   }) {
     showModalBottomSheet(
       shape: const RoundedRectangleBorder(
@@ -31,6 +34,7 @@ class SettingsScreen extends StatelessWidget {
       builder: (_) => SettingsScreen(
         title: titleShow,
         function: function,
+        color: color,
       ),
     );
   }
@@ -38,16 +42,36 @@ class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 300,
+      height: 250,
       child: Padding(
         padding: const EdgeInsets.all(10),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             FittedBox(
-              child: Text(
-                'Вносим изминения в "$title" столбце',
-                style: const TextStyle(fontSize: 20),
+              child: RichText(
+                text: TextSpan(
+                  text: 'Вносим изминения ',
+                  style: const TextStyle(
+                    fontSize: 20,
+                    color: Colors.black,
+                  ),
+                  children: [
+                    TextSpan(
+                      text: title,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: color,
+                      ),
+                    ),
+                    const TextSpan(
+                      text: " столбце",
+                      style: TextStyle(
+                        color: Colors.black,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
             const Divider(thickness: 2),

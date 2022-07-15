@@ -1,16 +1,12 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
 
-import 'widgets/column_time_widget.dart';
+// Project imports:
+import 'widgets/column_point_widget.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -23,10 +19,10 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: const [
-                ColumnTimeWidget(color: Colors.green),
-                ColumnTimeWidget(color: Colors.blue),
-                ColumnTimeWidget(color: Colors.red),
-                ColumnTimeWidget(color: Colors.yellow),
+                ColumnPointWidget(color: Colors.green, titleShow: 'зеленом'),
+                ColumnPointWidget(color: Colors.blue, titleShow: 'синем'),
+                ColumnPointWidget(color: Colors.red, titleShow: 'красном'),
+                ColumnPointWidget(color: Colors.yellow, titleShow: 'желтом'),
               ],
             ),
           ],
