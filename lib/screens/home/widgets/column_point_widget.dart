@@ -2,12 +2,14 @@
 import 'package:flutter/material.dart';
 
 // Package imports:
-import 'package:percent_indicator/linear_percent_indicator.dart';
+import 'package:provider/provider.dart';
 
 // Project imports:
+import 'package:hogwarts_faculty_hours/screens/home/point_provider.dart';
+import 'package:hogwarts_faculty_hours/screens/home/widgets/linear_percent_indicator_widget.dart';
 import 'package:hogwarts_faculty_hours/screens/settings_screen/settings_screen.dart';
 
-class ColumnPointWidget extends StatefulWidget {
+class ColumnPointWidget extends StatelessWidget {
   final Color color;
   final String titleShow;
 
@@ -18,66 +20,34 @@ class ColumnPointWidget extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<ColumnPointWidget> createState() => _ColumnPointWidgetState();
-}
-
-class _ColumnPointWidgetState extends State<ColumnPointWidget> {
-  int _counter = 0;
-
-  incrementCounter(int value) {
-    setState(() {
-      _counter += value;
-      if (_counter > 100) {
-        _counter = 100;
-      }
-      if (_counter < -100) {
-        _counter = -100;
-      }
-    });
-  }
-
-  clearItem() {
-    setState(() {
-      _counter = 0;
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
+    final pointWatch = context.watch<PointProvider>();
+    final pointRead = context.read<PointProvider>();
+
     return Column(
       children: [
         Text(
-          '$_counter',
+          pointWatch.counter.toString(),
           style: const TextStyle(fontSize: 24),
         ),
         const SizedBox(height: 10),
         GestureDetector(
           onTap: () {
             SettingsScreen.show(
-              color: widget.color,
+              color: color,
               context: context,
-              titleShow: widget.titleShow,
-              function: incrementCounter,
+              titleShow: titleShow,
+              function: () => pointRead.incrementCounter(pointWatch.counter),
             );
           },
-          child: RotatedBox(
-            quarterTurns: -1,
-            child: LinearPercentIndicator(
-              width: MediaQuery.of(context).size.width - 20,
-              lineHeight: 50,
-              progressColor: widget.color,
-              backgroundColor: widget.color.withOpacity(0.2),
-              barRadius: const Radius.circular(50),
-              animation: true,
-              animationDuration: 300,
-              percent: _counter < 0 ? 0.0 : _counter / 100,
-              animateFromLastPercent: true,
-            ),
+          child: LinearPercentIndicatorWidget(
+            color: color,
+            point: pointWatch.counter,
           ),
         ),
         IconButton(
           onPressed: () {
-            clearItem();
+            pointRead.clearItem();
           },
           icon: const Icon(Icons.delete_forever),
         ),

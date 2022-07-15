@@ -1,7 +1,11 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
 
+// Package imports:
+import 'package:provider/provider.dart';
+
 // Project imports:
+import 'package:hogwarts_faculty_hours/screens/home/point_provider.dart';
 import 'widgets/add_button_widget.dart';
 import 'widgets/reduce_button_widget.dart';
 
@@ -41,6 +45,8 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final pointRead = context.watch<PointProvider>();
+
     return SizedBox(
       height: 250,
       child: Padding(
@@ -81,25 +87,25 @@ class SettingsScreen extends StatelessWidget {
                 AddButtonHogwartsWidget(
                   text: '+3',
                   onTap: () {
-                    function(3);
+                    pointRead.incrementCounter(3);
                   },
                 ),
                 AddButtonHogwartsWidget(
                   text: '+5',
                   onTap: () {
-                    function(5);
+                    pointRead.incrementCounter(5);
                   },
                 ),
                 AddButtonHogwartsWidget(
                   text: '+10',
                   onTap: () {
-                    function(10);
+                    pointRead.incrementCounter(10);
                   },
                 ),
                 AddButtonHogwartsWidget(
                   text: '+15',
                   onTap: () {
-                    function(15);
+                    pointRead.incrementCounter(15);
                   },
                 ),
               ],
@@ -110,25 +116,25 @@ class SettingsScreen extends StatelessWidget {
                 ReduceButtonWidget(
                   text: '-3',
                   onTap: () {
-                    function(-3);
+                    pointRead.incrementCounter(-3);
                   },
                 ),
                 ReduceButtonWidget(
                   text: '-5',
                   onTap: () {
-                    function(-5);
+                    pointRead.incrementCounter(-5);
                   },
                 ),
                 ReduceButtonWidget(
                   text: '-10',
                   onTap: () {
-                    function(-10);
+                    pointRead.incrementCounter(-10);
                   },
                 ),
                 ReduceButtonWidget(
                   text: '-15',
                   onTap: () {
-                    function(-15);
+                    pointRead.incrementCounter(-15);
                   },
                 ),
               ],
