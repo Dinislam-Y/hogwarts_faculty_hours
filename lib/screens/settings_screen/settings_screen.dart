@@ -87,25 +87,25 @@ class SettingsScreen extends StatelessWidget {
                 AddButtonHogwartsWidget(
                   text: '+3',
                   onTap: () {
-                    pointRead.incrementCounter(3);
+                    pointRead.incrementCounter(3, color);
                   },
                 ),
                 AddButtonHogwartsWidget(
                   text: '+5',
                   onTap: () {
-                    pointRead.incrementCounter(5);
+                    pointRead.incrementCounter(5, color);
                   },
                 ),
                 AddButtonHogwartsWidget(
                   text: '+10',
                   onTap: () {
-                    pointRead.incrementCounter(10);
+                    pointRead.incrementCounter(10, color);
                   },
                 ),
                 AddButtonHogwartsWidget(
                   text: '+15',
                   onTap: () {
-                    pointRead.incrementCounter(15);
+                    pointRead.incrementCounter(15, color);
                   },
                 ),
               ],
@@ -116,25 +116,25 @@ class SettingsScreen extends StatelessWidget {
                 ReduceButtonWidget(
                   text: '-3',
                   onTap: () {
-                    pointRead.incrementCounter(-3);
+                    pointRead.incrementCounter(-3, color);
                   },
                 ),
                 ReduceButtonWidget(
                   text: '-5',
                   onTap: () {
-                    pointRead.incrementCounter(-5);
+                    pointRead.incrementCounter(-5, color);
                   },
                 ),
                 ReduceButtonWidget(
                   text: '-10',
                   onTap: () {
-                    pointRead.incrementCounter(-10);
+                    pointRead.incrementCounter(-10, color);
                   },
                 ),
                 ReduceButtonWidget(
                   text: '-15',
                   onTap: () {
-                    pointRead.incrementCounter(-15);
+                    pointRead.incrementCounter(-15, color);
                   },
                 ),
               ],

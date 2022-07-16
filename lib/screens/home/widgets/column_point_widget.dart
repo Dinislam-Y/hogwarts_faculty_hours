@@ -27,7 +27,7 @@ class ColumnPointWidget extends StatelessWidget {
     return Column(
       children: [
         Text(
-          pointWatch.counter.toString(),
+          pointWatch.counterMap[color]!.toString(),
           style: const TextStyle(fontSize: 24),
         ),
         const SizedBox(height: 10),
@@ -37,17 +37,18 @@ class ColumnPointWidget extends StatelessWidget {
               color: color,
               context: context,
               titleShow: titleShow,
-              function: () => pointRead.incrementCounter(pointWatch.counter),
+              function: () => pointRead.incrementCounter(
+                  pointWatch.counterMap[color]!, color),
             );
           },
           child: LinearPercentIndicatorWidget(
             color: color,
-            point: pointWatch.counter,
+            point: pointWatch.counterMap[color]!,
           ),
         ),
         IconButton(
           onPressed: () {
-            pointRead.clearItem();
+            pointRead.clearItem(color);
           },
           icon: const Icon(Icons.delete_forever),
         ),

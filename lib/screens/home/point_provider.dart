@@ -2,23 +2,32 @@
 import 'package:flutter/material.dart';
 
 class PointProvider extends ChangeNotifier {
-  int _counter = 0;
+  final Map<Color, int> _counterMap = {
+    Colors.green: 0,
+    Colors.blue: 0,
+    Colors.red: 0,
+    Colors.yellow: 0,
+  };
 
-  int get counter => _counter;
+  Map<Color, int> get counterMap => _counterMap;
 
-  incrementCounter(int value) {
-    _counter += value;
-    if (_counter > 100) {
-      _counter = 100;
+  incrementCounter(int value, Color color) {
+    int mapValue = _counterMap[color]!;
+
+    _counterMap[color] = (mapValue + value);
+
+    if (_counterMap[color]! > 100) {
+      _counterMap[color] = 100;
     }
-    if (_counter < -100) {
-      _counter = -100;
+    if (_counterMap[color]! < -100) {
+      _counterMap[color] = -100;
     }
     notifyListeners();
   }
 
-  clearItem() {
-    _counter = 0;
+  clearItem(Color color) {
+    _counterMap[color] = 0;
+
     notifyListeners();
   }
 }
